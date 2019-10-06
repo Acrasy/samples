@@ -1,6 +1,7 @@
 .vscode/
-*/bin
-*/include
-*/lib
-*/share
+*/bin/
+*/include/
+*/lib/
+*/lib64/
+*/share/
 */*.cfg
