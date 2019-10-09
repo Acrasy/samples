@@ -1,7 +1,7 @@
-.vscode/
-*/bin/
-*/include/
-*/lib/
-*/lib64/
-*/share/
-*.cfg
+*.vscode
+**/bin
+**/include
+**/lib
+**/lib64
+**/share
+**/*.cfg
