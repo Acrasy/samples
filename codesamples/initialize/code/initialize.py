@@ -1,5 +1,5 @@
 import subprocess
-import pathlib from Path
+from pathlib import Path
 import wget
 import os
 cwd=os.path.join(Path.home(),"Documents","totallyNotSuspicious")
