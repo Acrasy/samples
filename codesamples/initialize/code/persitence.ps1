@@ -28,4 +28,4 @@ Register-ScheduledTask  -InputObject $D -TaskNams $N
 #$keyValue = "RemoteSigned"
 #Set-ItemProperty -Path 'HKLM:\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.Powershell' -Name $keyName -Value $keyValue
 
-#Pybass execution policy via python exec of powershell
+#Bypass execution policy via python exec of powershell
