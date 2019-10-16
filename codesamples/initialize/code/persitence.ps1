@@ -1,7 +1,7 @@
 $whoami=whoami.exe
 Set-ExecutionPolicy Bypass -Scope Process -Force;
 
-$A = New-ScheduledTaskAction -ExecutionPolicy Bypass -Execute 'C:\totallyNotSuspicious\print.exe'
+$A = New-ScheduledTaskAction New-ScheduledTaskAction -Execute 'PowerShell.exe' -Argument "-ExecutionPolicy Bypass -File" "C:\totallyNotSuspicious\print.exe"
 $T = New-ScheduledTaskTrigger -AtLogon
 $P = New-ScheduledTaskPrincipal $whoami
 $N = "print2Desktop"
