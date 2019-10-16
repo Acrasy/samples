@@ -7,4 +7,4 @@ $P = New-ScheduledTaskPrincipal $whoami
 $N = "print2Desktop"
 $D= New-ScheduledTask -Action $A -Trigger $T -Settings $S -Principal $P
 
-Register-ScheduledTask  -InputObject $D -TaskNams $N
+Register-ScheduledTask  -InputObject $D -TaskName $N
